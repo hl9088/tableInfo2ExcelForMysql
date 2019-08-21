@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhl.mysql.export.mapper.ExportMapper">
+
+    <select id="selectAllTables" parameterType="java.lang.String" resultType="com.lhl.mysql.export.bean.Table">
+        select table_name as name,  table_comment as comment from information_schema.tables where table_schema = #{dbName} and table_type = 'BASE TABLE'
+    </select>
+
+    <select id="selectColumns" parameterType="java.lang.String" resultType="com.lhl.mysql.export.bean.Column">
+        select column_name as name, ordinal_position as position, is_nullable as isNull,
+        column_type as dataType, column_comment as comment, column_key as `key`
+        from information_schema.`COLUMNS` where table_schema = #{dbName} and TABLE_NAME = #{tableName}
+    </select>
+
+
+</mapper>
