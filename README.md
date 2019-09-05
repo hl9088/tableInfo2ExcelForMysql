@@ -5,7 +5,8 @@ export mysql table detail to excel file
 
 格式如下：
 	
-user				
+表名user
+
 序号   字段名    名称      类型          是否可空    key   备注
 
 1     id         id       bigint(20)    NO        PRI	
